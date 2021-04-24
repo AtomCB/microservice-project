@@ -16,6 +16,14 @@ spec:
         - name: tickets
           image: atomcb/tickets
           env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              valuye: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID,
+              value: ticketing
             - name: MONGO_URI
               value: 'mongodb://tickets-mongo-srv:27017/tickets'
             - name: JWT_KEY
